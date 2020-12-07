@@ -10,7 +10,6 @@ class TaskList extends StatelessWidget {
     return Consumer<TaskData>(
       builder: (context, taskData, child) {
         return ListView.builder(
-          shrinkWrap: true,
           itemBuilder: (context, index) {
             final task = taskData.tasks[index];
             return TaskTile(
@@ -19,6 +18,9 @@ class TaskList extends StatelessWidget {
               onCheckBoxChanged: (bool currentCheckboxState) {
                 taskData.updateTask(task);
               },
+                longPressCallback: (){
+                taskData.deleteTask(task);
+              }
             );
           },
           //necessary argument to give as dynamically

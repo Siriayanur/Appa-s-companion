@@ -8,31 +8,38 @@ class TaskTile extends StatelessWidget {
   final String taskTitle;
   final bool isChecked;
   final Function onCheckBoxChanged;
+  final Function longPressCallback;
 //  final Function onCalendarClick;
 
-  TaskTile({this.taskTitle,this.isChecked,this.onCheckBoxChanged});
+  TaskTile(
+      {
+        this.taskTitle,
+        this.isChecked,
+        this.onCheckBoxChanged,
+        this.longPressCallback
+      });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: ListTile(
+    return ListTile(
+      onLongPress: longPressCallback,
       trailing: GestureDetector(
-        onTap: (){
-        },
+          onTap: (){
+
+          },
         child: Icon(
-          Icons.calendar_today
-        ),
+        Icons.calendar_today
       ),
-        leading: Checkbox(
-          value: isChecked,
-          activeColor: addTaskButtonColor,
-          onChanged: onCheckBoxChanged,
-        ),
-        title: Text(
-          taskTitle,
-          style: TextStyle(
-            decoration: isChecked ? TextDecoration.lineThrough : null,
-          ),
+    ),
+      leading: Checkbox(
+        value: isChecked,
+        activeColor: addTaskButtonColor,
+        onChanged: onCheckBoxChanged,
+      ),
+      title: Text(
+        taskTitle,
+        style: TextStyle(
+          decoration: isChecked ? TextDecoration.lineThrough : null,
         ),
       ),
     );

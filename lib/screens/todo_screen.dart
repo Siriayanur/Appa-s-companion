@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:help_daddy/model/task_data.dart';
+import 'package:provider/provider.dart';
 import 'package:help_daddy/pallete.dart';
 import 'add_task_screen.dart';
 import 'package:help_daddy/widgets/task_list.dart';
@@ -18,6 +20,7 @@ class TodoScreen extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
               context: context,
+              isScrollControlled: true,
               builder: (context) => SingleChildScrollView(
                 child: Container(
                   padding: EdgeInsets.only(
@@ -65,6 +68,7 @@ class TodoScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: 30,),
+            Text('${Provider.of<TaskData>(context).taskCount}'),
             Container(child: Expanded(child: TaskList())),
           ],
         ),

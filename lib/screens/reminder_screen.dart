@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:help_daddy/model/task_data.dart';
 import 'package:help_daddy/pallete.dart';
+import 'package:provider/provider.dart';
 
 class RemainderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding:
-      EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0, bottom: 20.0),
+          EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0, bottom: 20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -19,7 +21,7 @@ class RemainderScreen extends StatelessWidget {
             height: 20,
           ),
           Text(
-            'What\'s up,Dad!',
+            'What\'s up, Appa!',
             style: TextStyle(
                 color: titleColor,
                 fontSize: 40.0,
@@ -32,18 +34,30 @@ class RemainderScreen extends StatelessWidget {
           Text(
             'CATEGORIES',
             style: TextStyle(
-              color: Colors.grey.shade500,
-              letterSpacing: 1.7,
-              fontWeight: FontWeight.bold
-            ),
+                color: Colors.grey.shade500,
+                letterSpacing: 1.7,
+                fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 30.0,),
+          SizedBox(
+            height: 30.0,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(child: ReusableCard(tasks : 30,title: 'Reminders')),
-              SizedBox(width: 10,),
-              Expanded(child: ReusableCard(tasks : 10,title: 'To Dos',)),
+              Expanded(
+                  child: ReusableCard(
+                      tasks: 10,
+                      title: 'Reminders'
+                  )
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                  child: ReusableCard(
+                tasks: Provider.of<TaskData>(context).taskCount,
+                title: 'To Dos',
+              )),
             ],
           ),
         ],
@@ -53,8 +67,7 @@ class RemainderScreen extends StatelessWidget {
 }
 
 class ReusableCard extends StatelessWidget {
-
-  ReusableCard({this.tasks,this.title});
+  ReusableCard({this.tasks, this.title});
   final int tasks;
   final String title;
 //  final Color sliderColor;
@@ -62,37 +75,26 @@ class ReusableCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.black
-      ),
-      padding: EdgeInsets.only(
-        top: 20.0,
-        left: 10.0,
-        right: 10.0,
-        bottom: 10.0
-      ),
+          borderRadius: BorderRadius.circular(10), color: Colors.black),
+      padding:
+          EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0, bottom: 10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
             '$tasks tasks',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 10
-            ),
+            style: TextStyle(color: Colors.grey, fontSize: 10),
           ),
           Text(
             title,
             style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.pinkAccent
-            ),
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.pinkAccent),
           ),
         ],
       ),
     );
   }
 }
-

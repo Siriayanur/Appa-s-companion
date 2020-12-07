@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 
 class AddTaskScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     String newTaskTitle;
@@ -20,6 +21,8 @@ class AddTaskScreen extends StatelessWidget {
           ),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+
           children: [
             Text(
               'Add Task',
@@ -42,15 +45,15 @@ class AddTaskScreen extends StatelessWidget {
               },
             ),
             FlatButton(
-              color: Colors.blue,
-              child: Text('Add',style: TextStyle(
-                color: addTaskButtonColor,
-
-              ),),
               onPressed: (){
+                print(newTaskTitle);
                 Provider.of<TaskData>(context,listen: false).addTask(newTaskTitle);
                 Navigator.pop(context);
               },
+              color: Colors.blue,
+              child: Text('Add',style: TextStyle(
+                color: addTaskButtonColor,
+              ),),
             )
           ],
         ),
