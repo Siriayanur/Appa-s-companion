@@ -22,7 +22,7 @@ environment:
 
 dependencies:
   provider: ^4.3.2+2
-  speech_recognition: ^0.3.0+1
+  add_2_calendar: ^1.4.0
   flutter:
     sdk: flutter
 
