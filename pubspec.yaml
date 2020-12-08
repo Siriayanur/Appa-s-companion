@@ -67,6 +67,9 @@ flutter:
     - family: Indie
       fonts:
         - asset: fonts/IndieFlower-Regular.ttf
+    - family: Josefin
+      fonts:
+        - asset: fonts/JosefinSans-Italic-VariableFont_wght.ttf
   #  - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

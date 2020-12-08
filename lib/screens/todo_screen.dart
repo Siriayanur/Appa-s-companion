@@ -5,7 +5,6 @@ import 'package:help_daddy/pallete.dart';
 import 'add_task_screen.dart';
 import 'package:help_daddy/widgets/task_list.dart';
 
-
 class TodoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -68,7 +67,7 @@ class TodoScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: 30,),
-            Text('${Provider.of<TaskData>(context).taskCount}'),
+            
             Container(child: Expanded(child: TaskList())),
           ],
         ),

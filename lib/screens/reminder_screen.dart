@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:help_daddy/model/task_data.dart';
 import 'package:help_daddy/pallete.dart';
 import 'package:provider/provider.dart';
+import 'package:help_daddy/widgets/reusable_card.dart';
+import 'package:help_daddy/widgets/reminder_card.dart';
+
+
 
 class RemainderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding:
-          EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0, bottom: 20.0),
+          EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0, bottom: 10.0),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -44,12 +49,7 @@ class RemainderScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(
-                  child: ReusableCard(
-                      tasks: 10,
-                      title: 'Reminders'
-                  )
-              ),
+              Expanded(child: ReusableCard(tasks: 6, title: 'Reminders')),
               SizedBox(
                 width: 10,
               ),
@@ -60,41 +60,80 @@ class RemainderScreen extends StatelessWidget {
               )),
             ],
           ),
+          SizedBox(
+            height: 15.0,
+          ),
+          Container(
+              padding:
+                  EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 20),
+              decoration: BoxDecoration(
+                color: Color(0xffE0FFFF),
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment:MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                        child: ReminderCard(
+                          image: AssetImage('images/keys.png'),
+                          label: 'Keys',
+                        ),
+                      ),
+                      Expanded( 
+                        child: ReminderCard(
+                          image: AssetImage('images/face-mask.png'),
+                          label: 'Mask',
+                        ),
+                      )
+                      ],
+                  ),
+                  SizedBox(height: 15,),
+                  Row(
+                    mainAxisAlignment:MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded( 
+                        child: ReminderCard(
+                          image: AssetImage('images/spectacles.png'),
+                          label: 'Specs',
+                        ),
+                      ),
+                      Expanded( 
+                        child: ReminderCard(
+                          image: AssetImage('images/medicine.png'),
+                          label: 'Tablets',
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 15,),
+                  Row(
+                    mainAxisAlignment:MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded( 
+                        child: ReminderCard(
+                          image: AssetImage('images/lunch.png'),
+                          label: 'Lunch',
+                        ),
+                      ),
+                      Expanded(
+                        child: ReminderCard(
+                          image: AssetImage('images/heart.png'),
+                          label: 'A Smile',
+                        ),
+                      )
+                    ],
+                  ),
+
+                ],
+              )),
         ],
       ),
     );
   }
 }
 
-class ReusableCard extends StatelessWidget {
-  ReusableCard({this.tasks, this.title});
-  final int tasks;
-  final String title;
-//  final Color sliderColor;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), color: Colors.black),
-      padding:
-          EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0, bottom: 10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text(
-            '$tasks tasks',
-            style: TextStyle(color: Colors.grey, fontSize: 10),
-          ),
-          Text(
-            title,
-            style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.pinkAccent),
-          ),
-        ],
-      ),
-    );
-  }
-}
+
